@@ -1,0 +1,13 @@
+//this is the PID definition, Kp , Ki and Kd are proportional, integral and differential gains
+//float PID_Out = Kp * actual_error + Ki * SUM (previous_error) +Kd * (actual_error -last_error);
+//Define the error
+//float actual_error = set_point - measured_value;
+//Variables
+float actual_error, error_previous, P, I, D, Kp, Ki, Kd ;
+float PID_Controller (float set_point, float measured_value) {
+error_previous=actual_error; //error_previous holds the previous error
+actual_error = set point - measured_value;
+//PID
+P = actual_error; //Curent error
+I += error_previous; //Sum of previous error
+D = actual_error - error_previous; //adjust Kp, Ki, Kd empirically by using online methode such as ZN
