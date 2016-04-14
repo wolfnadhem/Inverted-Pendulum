@@ -1,0 +1,54 @@
+ 34
+down vote
+accepted
+	
+
+You will need root privileges for any the following. To get root, open a terminal and run the command
+
+sudo su
+
+and the command prompt will change to '#' indicating that the terminal session has root privileges.
+
+......................Alternative #1. Add an initscript.
+
+Create a new script in /etc/init.d/myscript.
+
+vi /etc/init.d/myscript
+
+(Obviously it doesn't have to be called "myscript".) In this script, do whatever you want to do. Perhaps just run the script you mentioned.
+
+#!/bin/sh
+/path/to/my/script.sh
+
+Make it executable.
+
+chmod ugo+x /etc/init.d/myscript
+
+Configure the init system to run this script at startup.
+
+update-rc.d myscript defaults
+
+>>>>>>>>>>>>>>>>Alternative #2. Add commands to /etc/rc.local
+
+vi /etc/rc.local
+
+with content like the following.
+
+# This script is executed at the end of each multiuser runlevel
+/path/to/my/script.sh || exit 1   # Added by me
+exit 0
+
+<<<<<<<<<<<<<<<<Alternative #3. Add an Upstart job.
+
+Create /etc/init/myjob.conf
+
+vi /etc/init/myjob.conf
+
+with content like the following
+
+description     "my job"
+start on startup
+task
+exec /path/to/my/script.sh
+
+

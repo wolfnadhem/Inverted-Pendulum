@@ -1,0 +1,33 @@
+(i still don't know how to make a profile but i will find out by god's will :))
+
+
+**first command to help  see the device overlay loaded
+
+>>>export SLOTS=/sys/devices/bone_capemgr.8/slots
+
+**second command to help see pin configuration 
+
+>>>>export PINS=/sys/kernel/debug/pinctrl/44e10800.pinmux/pins
+
+**third command to check your profile 
+
+>>> more .profile
+
+**the output is supposed to be like this:
+>>export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+>>export SLOTS=/sys/devices/bone_capemgr.8/slots
+>>export PINS=/sys/kernel/debug/pinctrl/44e10800.pinmux/pins
+
+**to run your profile another time in another occasion just use this command 
+
+>> . ~/.profile
+
+** to see wich dto is loaded just do as follow
+
+>> cat $SLOTS (or >>cat $SLOTS|more  , for a better view that option works with every command that has a lon output)
+
+** to see the pin configuration just type 
+
+>> cat $PINS (or cat $PINS|grep 878 ,to see the pin with the offset 878, i took 878 for example it is the offset for Pin_9_12)
+
+
