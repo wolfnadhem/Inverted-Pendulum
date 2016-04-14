@@ -1,0 +1,45 @@
+Etape 1 :
+
+j'ai ajouté dans un premier temps :
+
+       "P9.28"
+        
+        
+ j'ai ajouté dans un deuxieme temps :
+ 
+        B67_0C: 67_0C {pinctrl-single,pins = <0x19C 0x0C>;};
+	B67_04: 67_04 {pinctrl-single,pins = <0x19C 0x04>;};
+        B67_24: 67_24 {pinctrl-single,pins = <0x19C 0x24>;};
+        B67_2C: 67_2C {pinctrl-single,pins = <0x19C 0x2C>;};
+        B67_2F: 67_2F {pinctrl-single,pins = <0x19C 0x2F>;};
+        B67_34: 67_34 {pinctrl-single,pins = <0x19C 0x34>;};
+        B67_0F: 67_0F {pinctrl-single,pins = <0x19C 0x0F>;};
+    
+ j'ai ajouté dans un troixieme temps :
+     
+        pruio-67 {
+          compatible = "bone-pinmux-helper";
+          status = "okay";
+          pinctrl-names = "x0C", "x04", "x24", "x2C", "x2F", "x34", "x0F";
+          pinctrl-0 = <&B67_0C>;
+          pinctrl-1 = <&B67_04>;
+          pinctrl-2 = <&B67_24>;
+          pinctrl-3 = <&B67_2C>;
+          pinctrl-4 = <&B67_2F>;
+          pinctrl-5 = <&B67_34>;
+          pinctrl-6 = <&B67_0F>;
+        };
+ 
+ Etape 2 :
+ 
+* j'ai utilisé la commande " scp libpruio-00A0.dts root@192.168.7.2:/root " pour copier le fichier libpruio-00A0.dts dans beaglebone
+ 
+*Pour compiler le fichier libpruio-00A0.dts dans beaglebone j'ai utilisé la commande :
+
+"dtc -O dtb -o libpruio-00A0.dtbo -b 0 -@ libpruio-00A0.dts" 
+
+*Enfin, on copie le fichier qu'on a obtenu aprés la compilation libpruio-00A0.dtbo dans le directory : lib/firmware .
+et on redemarre beaglebone. 
+Zaraii Nadhem .
+
+
